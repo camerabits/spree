@@ -54,20 +54,15 @@
 module SslRequirement
   extend ActiveSupport::Concern
 
-  included do
-    before_filter(:ensure_proper_protocol)
-  end
-
   module ClassMethods
-    # Specifies that the named actions requires an SSL connection to be performed (which is enforced by ensure_proper_protocol).
+    # SSL is no longer specified to be on, off, or allowed for certain
+    # actions. It is configured to be on or off application-wide.
     def ssl_required(*actions)
-      class_attribute(:ssl_required_actions)
-      self.ssl_required_actions = actions
+      ActiveSupport::Deprecation.warn "ssl_required has been deprecated. SSL is either on or off.", caller
     end
 
     def ssl_allowed(*actions)
-      class_attribute(:ssl_allowed_actions)
-      self.ssl_allowed_actions = actions
+      ActiveSupport::Deprecation.warn "ssl_allowed has been deprecated. SSL is either on or off.", caller
     end
   end
 

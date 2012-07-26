@@ -8,8 +8,6 @@ module Spree
   # removed if the functionality is not needed. 
 
   class CheckoutController < Spree::BaseController
-    ssl_required
-
     before_filter :load_order
     before_filter :ensure_valid_state
     before_filter :associate_user
