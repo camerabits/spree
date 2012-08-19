@@ -4,7 +4,7 @@ module Spree
       def process!
         if payment_method && payment_method.source_required?
           if source
-            if !processing?
+            if checkout?
               if Spree::Config[:auto_capture]
                 purchase!
               else
@@ -160,7 +160,7 @@ module Spree
       options.merge!({ :shipping => order.ship_total * 100,
                        :tax      => order.tax_total * 100,
                        :subtotal => order.item_total * 100 })
-      
+
       options.merge!({ :currency => payment_method.preferences[:currency_code] }) if payment_method && payment_method.preferences[:currency_code]
 
       options.merge({ :billing_address  => order.bill_address.try(:active_merchant_hash),
