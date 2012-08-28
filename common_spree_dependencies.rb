@@ -1,4 +1,4 @@
-# By placing all of Spree's shared dependencies in this file and then loading 
+# By placing all of Spree's shared dependencies in this file and then loading
 # it for each component's Gemfile, we can be sure that we're only testing just
 # the one component of Spree.
 source 'http://rubygems.org'
@@ -25,7 +25,7 @@ group :test do
   gem 'ffaker'
   gem 'shoulda-matchers', '~> 1.0.0'
   gem 'capybara'
-  gem 'selenium-webdriver', '2.22.2'
+  gem 'selenium-webdriver', '2.25.0'
   gem 'database_cleaner', '0.7.1'
   gem 'launchy'
 end

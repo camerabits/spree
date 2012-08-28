@@ -97,21 +97,21 @@ The source code is essentially a collection of gems.  Spree is meant to be run w
 
 1. Clone the Git repo
 
-        git clone git://github.com/spree/spree.git
-        cd spree
+        $ git clone git://github.com/spree/spree.git
+        $ cd spree
 
 2. Install the gem dependencies
 
-        bundle install
+        $ bundle install
 
 3. Create a sandbox Rails application for testing purposes (and automatically perform all necessary database setup)
 
-        bundle exec rake sandbox
+        $ bundle exec rake sandbox
 
-6. Start the server
+4. Start the server
 
-        cd sandbox
-        rails server
+        $ cd sandbox
+        $ rails server
 
 Performance
 -----------
@@ -125,8 +125,6 @@ You can recompile your assets as follows:
 If you want to remove precompiled assets (recommended before you commit to Git and push your changes) use the following rake task:
 
     $ bundle exec rake assets:clean
-
-
 
 Running Tests
 -------------

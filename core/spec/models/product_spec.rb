@@ -36,6 +36,31 @@ describe Spree::Product do
       end
     end
 
+    context "product has no variants" do
+      context "#delete" do
+        it "should set deleted_at value" do
+          product.delete
+          product.reload
+          product.deleted_at.should_not be_nil
+          product.master.deleted_at.should_not be_nil
+        end
+      end
+    end
+
+    context "product has variants" do
+      before do
+        create(:variant, :product => product)
+      end
+
+      context "#delete" do
+        it "should set deleted_at value" do
+          product.delete
+          product.deleted_at.should_not be_nil
+          product.variants_including_master.all? { |v| !v.deleted_at.nil? }.should be_true
+        end
+      end
+    end
+
     context "#on_hand" do
       # Regression test for #898
       context 'returns the correct number of products on hand' do
@@ -210,7 +235,7 @@ describe Spree::Product do
         @product.option_type_ids.should == prototype.option_type_ids
       end
 
-      it "should create product option types based on the prototype" do  
+      it "should create product option types based on the prototype" do
         @product.save
         @product.product_option_types.map(&:option_type_id).should == prototype.option_type_ids
       end
