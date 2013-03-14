@@ -62,6 +62,10 @@ $.fn.productPicker = function(){
   $(this).objectPicker(Spree.routes.product_search_basic);
 }
 
+$.fn.userPicker = function(){
+  $(this).objectPicker(Spree.routes.user_search_basic);
+}
+
 handle_date_picker_fields = function(){
   $('.datepicker').datepicker({
     dateFormat: Spree.translations.date_picker,
