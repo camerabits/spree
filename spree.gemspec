@@ -1,29 +1,47 @@
-# encoding: UTF-8
-version = File.read(File.expand_path("../SPREE_VERSION",__FILE__)).strip
+# -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree'
-  s.version     = version
-  s.summary     = 'Full-stack e-commerce framework for Ruby on Rails.'
-  s.description = 'Spree is an open source e-commerce framework for Ruby on Rails.  Join us on the spree-user google group or in #spree on IRC'
+  s.name = "spree"
+  s.version = "1.1.7.beta"
 
-  s.files        = Dir['README.md', 'lib/**/*']
-  s.require_path = 'lib'
-  s.requirements << 'none'
-  s.required_ruby_version     = '>= 1.8.7'
-  s.required_rubygems_version = ">= 1.3.6"
+  s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6") if s.respond_to? :required_rubygems_version=
+  s.authors = ["Sean Schofield"]
+  s.date = "2013-09-17"
+  s.description = "Spree is an open source e-commerce framework for Ruby on Rails.  Join us on the spree-user google group or in #spree on IRC"
+  s.email = "sean@spreecommerce.com"
+  s.files = ["README.md", "lib/generators", "lib/generators/spree", "lib/generators/spree/site", "lib/generators/spree/site/site_generator.rb", "lib/spree.rb"]
+  s.homepage = "http://spreecommerce.com"
+  s.licenses = ["BSD-3"]
+  s.require_paths = ["lib"]
+  s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
+  s.requirements = ["none"]
+  s.rubygems_version = "2.0.5"
+  s.summary = "Full-stack e-commerce framework for Ruby on Rails."
 
-  s.author       = 'Sean Schofield'
-  s.email        = 'sean@spreecommerce.com'
-  s.homepage     = 'http://spreecommerce.com'
-  s.license      = %q{BSD-3}
+  if s.respond_to? :specification_version then
+    s.specification_version = 4
 
-  s.add_dependency 'spree_core', version
-  s.add_dependency 'spree_auth', version
-  s.add_dependency 'spree_api', version
-  # s.add_dependency 'spree_dash', version
-  s.add_dependency 'spree_sample', version
-  s.add_dependency 'spree_promo', version
-  s.add_dependency 'spree_cmd', version
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<spree_core>, ["= 1.1.7.beta"])
+      s.add_runtime_dependency(%q<spree_auth>, ["= 1.1.7.beta"])
+      s.add_runtime_dependency(%q<spree_api>, ["= 1.1.7.beta"])
+      s.add_runtime_dependency(%q<spree_sample>, ["= 1.1.7.beta"])
+      s.add_runtime_dependency(%q<spree_promo>, ["= 1.1.7.beta"])
+      s.add_runtime_dependency(%q<spree_cmd>, ["= 1.1.7.beta"])
+    else
+      s.add_dependency(%q<spree_core>, ["= 1.1.7.beta"])
+      s.add_dependency(%q<spree_auth>, ["= 1.1.7.beta"])
+      s.add_dependency(%q<spree_api>, ["= 1.1.7.beta"])
+      s.add_dependency(%q<spree_sample>, ["= 1.1.7.beta"])
+      s.add_dependency(%q<spree_promo>, ["= 1.1.7.beta"])
+      s.add_dependency(%q<spree_cmd>, ["= 1.1.7.beta"])
+    end
+  else
+    s.add_dependency(%q<spree_core>, ["= 1.1.7.beta"])
+    s.add_dependency(%q<spree_auth>, ["= 1.1.7.beta"])
+    s.add_dependency(%q<spree_api>, ["= 1.1.7.beta"])
+    s.add_dependency(%q<spree_sample>, ["= 1.1.7.beta"])
+    s.add_dependency(%q<spree_promo>, ["= 1.1.7.beta"])
+    s.add_dependency(%q<spree_cmd>, ["= 1.1.7.beta"])
+  end
 end
