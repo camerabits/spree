@@ -18,11 +18,17 @@ module Spree
         def update
           if @order.update_attributes(params[:order])
             shipping_method = @order.available_shipping_methods(:front_end).first
+
+            if params[:user_id].present?
+              user = User.find(params[:user_id].to_i)
+            end
+
             if shipping_method
               @order.shipping_method = shipping_method
 
-              if params[:user_id].present?
-                @order.user_id = params[:user_id]
+              if user
+                @order.user_id = user.id
+                @order.email = user.email
                 @order.user true
               end
               while @order.next; end

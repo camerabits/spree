@@ -83,7 +83,7 @@ module Spree
       end
 
       def shipment
-        @shipment ||= order.shipments.find_by_number(params[:id])
+        @shipment ||= Shipment.find_by_number(params[:id]) || build_shipment
       end
 
       def build_shipment
@@ -92,6 +92,7 @@ module Spree
         @shipment.address ||= Address.new(:country_id => Spree::Config[:default_country_id])
         @shipment.shipping_method ||= order.shipping_method
         @shipment.attributes = params[:shipment]
+        @shipment
       end
 
       def model_class
