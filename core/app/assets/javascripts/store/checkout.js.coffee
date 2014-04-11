@@ -13,13 +13,7 @@ $ ->
       state_mapper[country_from_region(region)]
 
     get_states_required = (region) ->
-      $.ajax '/countries',
-        type: 'GET'
-        success: (data, textStatus, jqXHR) ->
-          states_required_mapper = data
-          return states_required_mapper[country_from_region(region)]
-        error: (jqXHR, textStatus, errorThrown) ->
-          console.log errorThrown
+      states_required_mapper[country_from_region(region)]
 
     update_state = (region) ->
       states = get_states(region)
